@@ -22,15 +22,15 @@ This patch fixes some ACPI bugs reported by the Linux kernel.
 
     ```
     # pacman -S acpica
-    # cat /sys/firmware/acpi/tables/DSDT > original_dsdt
-    $ iasl -d original_dsdt
+    # cat /sys/firmware/acpi/tables/DSDT > original-dsdt
+    $ iasl -d original-dsdt
     ```
 
 3. Download the patched source code, examine it by comparing it with the original version and compile it.
 
     ```
     $ wget https://github.com/navna/msi-modern-15-a10m-acpi/raw/main/dsdt.dsl
-    $ git diff original_dsdt.dsl dsdt.dsl
+    $ git diff original-dsdt.dsl dsdt.dsl
     $ iasl -tc dsdt.dsl
     ```
 
@@ -41,8 +41,8 @@ This patch fixes some ACPI bugs reported by the Linux kernel.
         ```
         $ mkdir -p kernel/firmware/acpi
         $ cp dsdt.aml kernel/firmware/acpi
-        $ find kernel | cpio -H newc --create > acpi_override.img
-        # cp acpi_override.img /boot
+        $ find kernel | cpio -H newc --create > acpi-override.img
+        # mv acpi-override.img /boot
         ```
 
     - Configure the bootloader (systemd-boot example):
@@ -50,7 +50,7 @@ This patch fixes some ACPI bugs reported by the Linux kernel.
         ```
         title   Arch Linux
         linux   /vmlinuz-linux
-        initrd  /acpi_override.img
+        initrd  /acpi-override.img
         initrd  /initramfs-linux.img
         options  ...
         ```
