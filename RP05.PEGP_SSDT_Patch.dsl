@@ -1,7 +1,3 @@
-Combine with 
-5F514431 to 58514431 _QD1 to XQD1 Rename Patch
-5F514435 to 58514435 _QD5 TO XQD5 Rename Patch
-
 /*
  * Intel ACPI Component Architecture
  * AML/ASL+ Disassembler version 20200925 (64-bit version)
